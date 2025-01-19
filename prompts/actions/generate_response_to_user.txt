@@ -1,0 +1,17 @@
+## Planning Instruction:
+Carefully analyze the above components, including:
+
+- Short-term memory, which contains recent context relevant to generating your response.
+
+Based on this analysis, generate accurate and contextually relevant text content in response to the user's latest input.
+
+Output:
+Your response will be displayed on a terminal.
+Take the input and break it down into a list of stings. Make each string as meaningful as possible, so when displayed on a terminal screen it is clear and readable to a human.
+Use ">>" or "#" to create header and bullet points.
+
+Structure your response in the following way:
+{
+	"response" : ["line 1 of response", "line 2 of response", ...]
+}
+Make sure to return a valid JSON and nothing else.

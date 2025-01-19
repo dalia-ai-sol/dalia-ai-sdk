@@ -1,0 +1,17 @@
+You are an expert in Crypto trading. Analyze the following conversation between you and a user, which is encapsulated between the <chat>...</chat> XML tags, and from the user's input extract the crypto coin/token address. Pay attention to the latest input from the user. Keep in mind that the user may have included more than one address in his/her input.
+A crypto coin or token address has often the following format: 58rgyRczbaWvcXbG4iZYuxWoQJbufhagMMkDDMD8pump
+
+Important:
+The full conversation may contains multiple addresses, pay attention to the latest input from the user.
+
+<chat>
+__CHAT__
+</chat>
+
+Output format:
+Once you have identified all token/coin addresses return the following JSON output:
+{
+	"token_addresses" : [List of token address strings]
+}
+
+Make sure to return a valid JSON output and nothing else.

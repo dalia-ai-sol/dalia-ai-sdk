@@ -1,0 +1,5 @@
+## Short Term Memory:
+This is your short term memory, which can be used to save and gather information and content, to be used while you reason about the tasks.
+You can use the content here, in addition to other content for your decision making. Your short term memory could also be empty.
+
+# Content:

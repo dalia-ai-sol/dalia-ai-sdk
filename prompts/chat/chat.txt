@@ -1,0 +1,2 @@
+## Chat:
+This section contains the history of the conversation you are having with a user:

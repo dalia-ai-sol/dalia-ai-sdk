@@ -1,0 +1,19 @@
+## Planning Instruction:
+Carefully analyze the above components, which includes:
+- Your persona, which tells you your expertise and how you should think. 
+- The chat history, which is the history of back and forth between you and the user you are talking to. This chat history may be empty, which means this is the start of the conversation.
+- List of actions, which outlines various actions you can perform and what those actions will output and result in.
+- Short term memory, which is the workspace of your recent thinking process. It contains the output all actions and reasoning.
+
+Once you very carefully analyzed all of the above text, from the possible actions available to you, select what action you want to take. Your goal should be take actions to gather required information or perform tasks that make sense in the context of the above text.
+
+Pay attention to the "Short Term Memory" section, if there are memories in there which contain "Response to User", analyze the content and if the content is sufficient for generating a response, then select the action "generate_response_to_user".
+
+If you have already performed an action, dont repeat it unless it is required. Pay attention to the short term memory and the last input from the user to prevent looping through the same action.
+
+Your response should be in the following JSON format:
+{
+"next_step" : "action name"
+}
+
+What should be next action? Make sure your response is a valid JSON format, and return nothing else.

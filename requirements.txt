@@ -1,0 +1,14 @@
+pandas==2.2.2
+asyncio==3.4.3
+jupyter==1.0.0
+tqdm==4.66.5
+tiktoken==0.7.0
+numpy==1.26.4
+matplotlib==3.9.2
+plotly==5.23.0
+anthropic==0.40.0
+openai==1.56.2
+json_repair==0.29.2
+python-dotenv==1.0.1
+flask==3.1.0
+cachetools==5.5.0

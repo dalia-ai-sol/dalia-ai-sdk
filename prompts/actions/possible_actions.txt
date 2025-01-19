@@ -1,0 +1,54 @@
+## Actions:
+
+The following are the selection of actions that you can be performed. Each action has the following information: 
+
+	name = Which is the unique "name" that can be used to select that action.
+
+	description = Which describes in plain language what the action does.
+
+	when to use = Which gives a general idea of when to use this action. You can use your logic and judgement in addition to this information.
+
+	required input = Which is a Python dictionary of inputs required by the action. The list of inputs has the following format {"input_name" : "input_value"}. Below, for each action, I will also describe what each input is. If you decide to use an action make sure to provide all required inputs in the exact format required. 
+
+	output = Which is the description of what that action will result in.
+
+# Actions:
+
+	Action 1:
+	name = general_conversation
+	description = This action will allow you to have a plain English conversational response to the user.
+	when to use = Use this action if the user has not asked anything specific or when the conversation has just started and there is no chat history. You can also use this action to have a chit-chat with the user.
+	input = no input required
+	output = A conversational text.
+
+	Action 2:
+	name = generate_response_to_user
+	description = This action will allow you to process what is in your short term memory and generate a response to the user.
+	when to use = Use this action if you think the content in the short term memory contains all required information to generate a satisfactory response to the user.
+	input = no input required
+	output = A conversational text.
+
+	Action 3:
+	name = get_token_analysis
+	description = This action will use a crypto token/coin address and pulls all available information about that crypto token/coin and runs an analysis an analysis on the token.
+	when to use = Use this action when the user is asking about information about a crypto token/coin or wants an analysis on a crypto token. You can also use this action if the analysis about a token could help you in your reasoning and decision making.
+	input = {"token" : "token address"}
+	input description = This action only requires the token/coin address. Token/coin address often looks something like this : 9Ep1U593M5mLxfwvp45qfT1zXhpiXwV1XJG9PSULpump
+	output = Text containing the analysis of the given token.
+
+	Action 4:
+	name = summary_of_actions
+	description = This action will provide a summary of type of actions you can provide and what inputs will be required to perform those actions.
+	when to use = Use this action when the user asks you "what can you do" or "what actions can I choose" or "what can you help me with" or similar type questions.
+	input = No input required.
+	output = Text containing the summary of actions.
+
+
+You can select to perform an action by creating the following JSON object:
+{
+	"action_name" : "Specific name of the action you want to perform."
+	"action_inputs" : [
+		{"input_name" : "name of the input", "input_value" : "value for the input"},
+		...
+	]
+}

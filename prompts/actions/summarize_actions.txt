@@ -1,0 +1,5 @@
+## Instruction:
+Carefully analyze the "actions" section of the above content, and provide a brief but detailed description of what actions can be performed. The goal is to inform the user what possible actions can be performed and what input is required per action.
+
+# Output Format:
+Produce your response into text, where every line is the action name (in human readable way), add ":" and then in one sentence, describe the action.
