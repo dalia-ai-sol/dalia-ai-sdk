@@ -1,7 +1,7 @@
 # Dalia AI
 
 [![Website](https://img.shields.io/badge/Website-Visit%20Now-blue)](https://dalia-ai-sol.github.io)  
-[![Twitter](https://img.shields.io/badge/Twitter-Visit%20Now-blue)](https://x.com/Sol_Dalia_ai)
+[![Twitter](https://img.shields.io/badge/Twitter-Visit%20Now-blue)](https://x.com/Sol_Dalia_ai)  
 [![Telegram](https://img.shields.io/badge/Telegram-Join%20Community-blue)](https://t.me/daliaAIsol)
 
 ---
