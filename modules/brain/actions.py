@@ -13,6 +13,7 @@ class Actions:
 		self.actions["general_conversation"] = self.general_conversation
 		self.actions["generate_response_to_user"] = self.generate_response_to_user
 		self.actions["get_token_analysis"] = self.get_token_analysis
+		self.actions["compare_tokens"] = self.compare_tokens
 
 	def get_possible_actions(self):
 		with open("./prompts/actions/possible_actions.txt") as txt_file:
@@ -89,3 +90,13 @@ class Actions:
 			response = "No token addresses found."
 		result_type = "Response to User"
 		return 	response, result_type
+	
+	def compare_tokens(self, mental_state):
+		analysis_of_tokens = self.get_token_analysis(mental_state)
+		with open("./prompts/actions/token_analysis/compare_tokens.txt") as txt_file:
+			system_prompt = txt_file.read()
+		system_prompt = system_prompt.replace("__DATA__", analysis_of_tokens)
+		user_prompt = "Please provide your response."
+		result = self.llm.call(system_prompt, user_prompt, json_extract=True)
+		print(result)
+		exit(0)

@@ -43,6 +43,14 @@ The following are the selection of actions that you can be performed. Each actio
 	input = No input required.
 	output = Text containing the summary of actions.
 
+	Action 5:
+	name = compare_tokens
+	description = This action will grab crypto token/coin stats and information for two or more tokens and compared them to one another and provide a summary of which one is a better buy.
+	when to use = Use this action when the user asks you to compare two or more tokens or coin to one another.
+	input = {"token_1" : "token address 1", "token_2" : "token address 2"}
+	input description = This action will require two or more token addresses.
+	output = Text containing the summary of token comparison.
+
 
 You can select to perform an action by creating the following JSON object:
 {
