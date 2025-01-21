@@ -21,6 +21,9 @@ Dalia AI is an intelligent agent designed to assist crypto traders in making inf
 - **Good Time to Buy?**: Provides an analysis of market data for a coin and determines if it is a good time to buy a coin or not.
 ---
 
+### Upcoming Features:
+- **NEWS**: The AI agent will now be able to summarize and extract insights from News articles.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
