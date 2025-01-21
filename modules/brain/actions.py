@@ -1,5 +1,6 @@
 from modules.base.helper_functions import promptify_mental_state
 from modules.toolbox.token.token_utils import *
+from modules.toolbox.news.news import get_latest_news
 from modules.base.llm import LLM
 import json
 import arrow
@@ -15,6 +16,7 @@ class Actions:
 		self.actions["get_token_analysis"] = self.get_token_analysis
 		self.actions["compare_tokens"] = self.compare_tokens
 		self.actions["is_it_good_time_to_buy"] = self.is_it_good_time_to_buy
+		self.actions["get_latest_news_on_query"] = self.get_latest_news_on_query
 
 	def get_possible_actions(self):
 		with open("./prompts/actions/possible_actions.txt") as txt_file:
@@ -120,6 +122,24 @@ class Actions:
 			system_prompt = txt_file.read()
 		system_prompt = system_prompt.replace("__STATS__", json.dumps(token_info))
 		system_prompt = system_prompt.replace("__PRICE__", json.dumps(price_data))
+		user_prompt = "Please provide your response."
+		result = self.llm.call(system_prompt, user_prompt, json_extract=False)
+		result_type = "Response to User"
+		return result, result_type
+	
+	def get_latest_news_on_query(self, mental_state):
+		with open("./prompts/actions/news_analysis/get_news_query_topic.txt") as txt_file:
+			system_prompt = txt_file.read()
+		chat_data = mental_state["chat_history"]
+		system_prompt = system_prompt.replace("__CHAT__", str(chat_data))
+		user_prompt = "Please provide your response."
+		result = self.llm.call(system_prompt, user_prompt, json_extract=True)
+		news_qeury = result["news_query"]
+		news_data = get_latest_news(news_qeury)
+		with open("./prompts/actions/news_analysis/analyze_news.txt") as txt_file:
+			system_prompt = txt_file.read()
+		system_prompt = system_prompt.replace("__NEWS_QUERY__", news_qeury)
+		system_prompt = system_prompt.replace("__NEWS_DATA__", str(news_data))
 		user_prompt = "Please provide your response."
 		result = self.llm.call(system_prompt, user_prompt, json_extract=False)
 		result_type = "Response to User"

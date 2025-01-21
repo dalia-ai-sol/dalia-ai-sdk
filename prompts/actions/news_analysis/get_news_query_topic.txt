@@ -1,0 +1,16 @@
+You are an expert in Crypto trading. Analyze the following conversation between you and a user, which is encapsulated between the <chat>...</chat> XML tags, and from the user's input extract the news topic they are interested in searching. Pay attention to the latest input from the user.
+An example would be something like this:
+User input: What are some latest news on Donal Trump?
+News query: Donal Trump
+
+<chat>
+__CHAT__
+</chat>
+
+Output format:
+Once you have identified the news query, return the following JSON:
+{
+	"news_query" : "String for the news query"
+}
+
+Make sure to return a valid JSON output and nothing else.

@@ -59,6 +59,14 @@ The following are the selection of actions that you can be performed. Each actio
 	input description = This action will require token address.
 	output = Text containing the analysis of coin purchase.
 
+	Action 7:
+	name = get_latest_news_on_query
+	description = This action will grab latest news articles based on a given query or search topic and performs an analysis of it and returns the summary of the analysis.
+	when to use = Use this action when the user asks you to analyze latest news on a given news topic, or asks you anything related to news.
+	input = {"news query" : "query string for the news search"}
+	input description = The input needed is query topic to search for latest news.
+	output = Text containing the analysis of news.
+
 
 You can select to perform an action by creating the following JSON object:
 {
