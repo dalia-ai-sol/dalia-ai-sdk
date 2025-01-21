@@ -18,6 +18,7 @@ Dalia AI is an intelligent agent designed to assist crypto traders in making inf
 - **Crypto Analysis**: Analyze specific cryptocurrencies by providing wallet or contract addresses.
 - **In-Depth Insights**: Ask follow-up questions and dive deeper into the analysis.
 - **Token Comparisons**: Compare two or more tokens, and get detailed analysis and recommendations.
+- **Good Time to Buy?**: Provides an analysis of market data for a coin and determines if it is a good time to buy a coin or not.
 ---
 
 ## 🚀 Getting Started

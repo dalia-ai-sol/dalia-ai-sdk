@@ -2,7 +2,7 @@ from modules.base.helper_functions import promptify_mental_state
 from modules.toolbox.token.token_utils import *
 from modules.base.llm import LLM
 import json
-
+import arrow
 
 class Actions:
 
@@ -14,6 +14,7 @@ class Actions:
 		self.actions["generate_response_to_user"] = self.generate_response_to_user
 		self.actions["get_token_analysis"] = self.get_token_analysis
 		self.actions["compare_tokens"] = self.compare_tokens
+		self.actions["is_it_good_time_to_buy"] = self.is_it_good_time_to_buy
 
 	def get_possible_actions(self):
 		with open("./prompts/actions/possible_actions.txt") as txt_file:
@@ -98,5 +99,28 @@ class Actions:
 		system_prompt = system_prompt.replace("__DATA__", analysis_of_tokens)
 		user_prompt = "Please provide your response."
 		result = self.llm.call(system_prompt, user_prompt, json_extract=True)
-		print(result)
-		exit(0)
+		return result
+	
+	def is_it_good_time_to_buy(self, mental_state):
+		with open("./prompts/actions/token_analysis/get_token_address.txt") as txt_file:
+			system_prompt = txt_file.read()
+		chat_data = mental_state["chat_history"]
+		system_prompt = system_prompt.replace("__CHAT__", str(chat_data))
+		user_prompt = "Please provide your response."
+		result = self.llm.call(system_prompt, user_prompt, json_extract=True)
+		token_addresses = result["token_addresses"][0]
+		token_info = get_token_trade_data(token_addresses)
+		time_now = arrow.utcnow().timestamp()
+		time_past = arrow.utcnow().shift(hours=-1).timestamp()
+		data = get_token_pricing_history(token_addresses, start_time=int(time_past), end_time=int(time_now), interval_type='1m')
+		price_data = data[1]
+		date_data = [arrow.get(i).to('utc').format("YYYY-MM-DD HH:mm:ss") for i in  data[0]]
+		price_data = {"date time":date_data , "prices":price_data}
+		with open("./prompts/actions/token_analysis/good_time_to_buy.txt") as txt_file:
+			system_prompt = txt_file.read()
+		system_prompt = system_prompt.replace("__STATS__", json.dumps(token_info))
+		system_prompt = system_prompt.replace("__PRICE__", json.dumps(price_data))
+		user_prompt = "Please provide your response."
+		result = self.llm.call(system_prompt, user_prompt, json_extract=False)
+		result_type = "Response to User"
+		return result, result_type
