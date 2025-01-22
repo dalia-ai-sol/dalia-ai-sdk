@@ -22,9 +22,6 @@ Dalia AI is an intelligent agent designed to assist crypto traders in making inf
 - **NEWS**: The AI agent will now be able to summarize and extract insights from News articles.
 ---
 
-### Upcoming Features:
-- **TBD**
-
 ## 🚀 Getting Started
 
 ### Prerequisites
