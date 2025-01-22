@@ -17,6 +17,7 @@ class Actions:
 		self.actions["compare_tokens"] = self.compare_tokens
 		self.actions["is_it_good_time_to_buy"] = self.is_it_good_time_to_buy
 		self.actions["get_latest_news_on_query"] = self.get_latest_news_on_query
+		self.actions["get_token_technical_rsi"] = self.get_token_technical_rsi
 
 	def get_possible_actions(self):
 		with open("./prompts/actions/possible_actions.txt") as txt_file:
@@ -140,6 +141,28 @@ class Actions:
 			system_prompt = txt_file.read()
 		system_prompt = system_prompt.replace("__NEWS_QUERY__", news_qeury)
 		system_prompt = system_prompt.replace("__NEWS_DATA__", str(news_data))
+		user_prompt = "Please provide your response."
+		result = self.llm.call(system_prompt, user_prompt, json_extract=False)
+		result_type = "Response to User"
+		return result, result_type
+	
+	def get_token_technical_rsi(self, mental_state):
+		with open("./prompts/actions/token_analysis/get_token_address.txt") as txt_file:
+			system_prompt = txt_file.read()
+		chat_data = mental_state["chat_history"]
+		system_prompt = system_prompt.replace("__CHAT__", str(chat_data))
+		user_prompt = "Please provide your response."
+		result = self.llm.call(system_prompt, user_prompt, json_extract=True)
+		token_addresses = result["token_addresses"][0]		
+		time_now = arrow.utcnow().timestamp()
+		time_past = arrow.utcnow().shift(hours=-24).timestamp()
+		data = get_token_pricing_history(token_addresses, start_time=int(time_past), end_time=int(time_now), interval_type='15m')
+		price_data = data[1]
+		date_data = [arrow.get(i).to('utc').format("YYYY-MM-DD HH:mm:ss") for i in  data[0]]
+		price_data = {"date time":date_data , "prices":price_data}
+		with open("./prompts/actions/token_analysis/compute_technical_rsi.txt") as txt_file:
+			system_prompt = txt_file.read()
+		system_prompt = system_prompt.replace("__DATA__", json.dumps(price_data))
 		user_prompt = "Please provide your response."
 		result = self.llm.call(system_prompt, user_prompt, json_extract=False)
 		result_type = "Response to User"

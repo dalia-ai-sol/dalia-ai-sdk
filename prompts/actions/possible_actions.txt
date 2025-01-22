@@ -68,6 +68,14 @@ The following are the selection of actions that you can be performed. Each actio
 	output = Text containing the analysis of news.
 
 
+	Action 8:
+	name = get_token_technical_rsi
+	description = This action will grab price data over the past 24 hours and compute technical indicator RSI (Relative Strength Index) for it and return it and also do an analysis and determine if the RSI is good or bad.
+	when to use = Use this action when the user asks you to compute and analyze technical factor Relative Strength Index RSI for a given token or coin.
+	input = {"token address" : "token address"}
+	input description = This action will require token address.
+	output = Text containing the analysis of technical.
+
 You can select to perform an action by creating the following JSON object:
 {
 	"action_name" : "Specific name of the action you want to perform."
