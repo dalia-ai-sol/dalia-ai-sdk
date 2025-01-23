@@ -13,14 +13,8 @@
 Dalia AI is an intelligent agent designed to assist crypto traders in making informed decisions. Powered by OpenAI's LLM and BirdEye's crypto analytics, Dalia AI offers a conversational interface to interact, analyze, and perform in-depth research on cryptocurrencies.  
 
 ### Features:
-- **Interactive Chat**: Engage in meaningful conversations and chit-chat.
-- **Task Guidance**: Discover the actions and capabilities of the AI agent.
 - **Crypto Analysis**: Analyze specific cryptocurrencies by providing wallet or contract addresses.
 - **In-Depth Insights**: Ask follow-up questions and dive deeper into the analysis.
-- **Token Comparisons**: Compare two or more tokens, and get detailed analysis and recommendations.
-- **Good Time to Buy?**: Provides an analysis of market data for a coin and determines if it is a good time to buy a coin or not.
-- **NEWS**: The AI agent will now be able to summarize and extract insights from News articles.
-- **Technical Analysis**: The AI agent will now be able to pull price data and compute technical analysis.
 ---
 
 ### Upcoming Features:
